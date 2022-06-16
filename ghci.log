@@ -194,3 +194,253 @@ Ok, one module loaded.
 2022-06-09 16:15:15.1195955
 >>> :quit
 Leaving GHCi.
+GHCi, version 9.0.2: https://www.haskell.org/ghc/  :? for help
+Loaded GHCi configuration from /home/mina/bprog2022/.ghci
+2022-06-16 15:02:06.3069816
+>>> take 3 [3,1,4,1,5]
+[3,1,4]
+2022-06-16 15:05:40.2987401
+>>> :e src/First.hs
+   1  module First where
+   2  
+   3  double :: Int -> Int
+   4  double x = x + x
+   5  
+   6  quadruple :: Int -> Int
+   7  quadruple x = double (double x)
+Ok, no modules loaded.
+2022-06-16 15:10:46.3492775
+>>> :l src/First.hs
+[1 of 1] Compiling First            ( src/First.hs, interpreted )
+Ok, one module loaded.
+2022-06-16 15:10:46.4093831
+>>> 
+2022-06-16 15:11:35.8765248
+>>> double
+
+<interactive>:5:1: error:
+    • No instance for (Show (Int -> Int)) arising from a use of ‘print’
+        (maybe you haven't applied a function to enough arguments?)
+    • In a stmt of an interactive GHCi command: print it
+2022-06-16 15:12:54.311803
+>>> take (double 2) [1,2,3,4,5]
+[1,2,3,4]
+2022-06-16 15:15:53.2825408
+>>> 
+2022-06-16 15:20:15.4341559
+>>> [1 .. 10]
+[1,2,3,4,5,6,7,8,9,10]
+2022-06-16 15:20:33.1826461
+>>> :e
+   1  module First where
+   2  
+   3  double :: Int -> Int
+   4  double x = x + x
+   5  
+   6  quadruple :: Int -> Int
+   7  quadruple x = double (double x)
+   8  
+   9  factorial :: integer -> integer
+  10  factorial n = product [1 .. n]
+[1 of 1] Compiling First            ( src/First.hs, interpreted )
+
+src/First.hs:10:15: error:
+    • No instance for (Num integer) arising from a use of ‘product’
+      Possible fix:
+        add (Num integer) to the context of
+          the type signature for:
+            factorial :: forall integer. integer -> integer
+    • In the expression: product [1 .. n]
+      In an equation for ‘factorial’: factorial n = product [1 .. n]
+   |
+10 | factorial n = product [1 .. n]
+   |               ^^^^^^^^^^^^^^^^
+
+src/First.hs:10:23: error:
+    • No instance for (Enum integer)
+        arising from the arithmetic sequence ‘1 .. n’
+      Possible fix:
+        add (Enum integer) to the context of
+          the type signature for:
+            factorial :: forall integer. integer -> integer
+    • In the first argument of ‘product’, namely ‘[1 .. n]’
+      In the expression: product [1 .. n]
+      In an equation for ‘factorial’: factorial n = product [1 .. n]
+   |
+10 | factorial n = product [1 .. n]
+   |                       ^^^^^^^^
+Failed, no modules loaded.
+2022-06-16 15:21:02.7066438
+>>> :e
+   1  module First where
+   2  
+   3  double :: Int -> Int
+   4  double x = x + x
+   5  
+   6  quadruple :: Int -> Int
+   7  quadruple x = double (double x)
+   8  
+   9  factorial :: integer -> integer
+  10  factorial n = product [1 .. n]
+[1 of 1] Compiling First            ( src/First.hs, interpreted )
+
+src/First.hs:10:15: error:
+    • No instance for (Num integer) arising from a use of ‘product’
+      Possible fix:
+        add (Num integer) to the context of
+          the type signature for:
+            factorial :: forall integer. integer -> integer
+    • In the expression: product [1 .. n]
+      In an equation for ‘factorial’: factorial n = product [1 .. n]
+   |
+10 | factorial n = product [1 .. n]
+   |               ^^^^^^^^^^^^^^^^
+
+src/First.hs:10:23: error:
+    • No instance for (Enum integer)
+        arising from the arithmetic sequence ‘1 .. n’
+      Possible fix:
+        add (Enum integer) to the context of
+          the type signature for:
+            factorial :: forall integer. integer -> integer
+    • In the first argument of ‘product’, namely ‘[1 .. n]’
+      In the expression: product [1 .. n]
+      In an equation for ‘factorial’: factorial n = product [1 .. n]
+   |
+10 | factorial n = product [1 .. n]
+   |                       ^^^^^^^^
+Failed, no modules loaded.
+2022-06-16 15:21:27.9871907
+>>> :e
+   1  module First where
+   2  
+   3  double :: Int -> Int
+   4  double x = x + x
+   5  
+   6  quadruple :: Int -> Int
+   7  quadruple x = double (double x)
+   8  
+   9  factorial :: Integer -> Integer
+  10  factorial n = product [1 .. n]
+[1 of 1] Compiling First            ( src/First.hs, interpreted )
+Ok, one module loaded.
+2022-06-16 15:23:08.3828819
+>>> factorisl 3
+
+<interactive>:12:1: error:
+    • Variable not in scope: factorisl :: t0 -> t
+    • Perhaps you meant ‘factorial’ (line 10)
+2022-06-16 15:23:32.814957
+>>> factorial 3
+6
+2022-06-16 15:24:26.6575661
+>>> factorial 4
+24
+2022-06-16 15:24:44.1265978
+>>> 
+2022-06-16 15:38:14.9393563
+>>> :e
+   1  module First where
+   2  
+   3  double :: Int -> Int
+   4  double x = x + x
+   5  
+   6  quadruple :: Int -> Int
+   7  quadruple x = double (double x)
+   8  
+   9  factorial :: Integer -> Integer
+  10  factorial n = product [1 .. n]
+  11  
+  12  average :: [Int] -> Int
+  13  average xs = sum xs `div` length
+  14  
+  15  ave :: [Int] -> Int
+  16  ave xs = div (sum xs) (length xs)
+  17  
+[1 of 1] Compiling First            ( src/First.hs, interpreted )
+
+src/First.hs:13:27: error:
+    • Couldn't match expected type ‘Int’
+                  with actual type ‘t0 a0 -> Int’
+    • Probable cause: ‘length’ is applied to too few arguments
+      In the second argument of ‘div’, namely ‘length’
+      In the expression: sum xs `div` length
+      In an equation for ‘average’: average xs = sum xs `div` length
+   |
+13 | average xs = sum xs `div` length
+   |                           ^^^^^^
+Failed, no modules loaded.
+2022-06-16 15:38:20.9358647
+>>> :e
+   1  module First where
+   2  
+   3  double :: Int -> Int
+   4  double x = x + x
+   5  
+   6  quadruple :: Int -> Int
+   7  quadruple x = double (double x)
+   8  
+   9  factorial :: Integer -> Integer
+  10  factorial n = product [1 .. n]
+  11  
+  12  average :: [Int] -> Int
+  13  average xs = sum xs `div` length xs
+  14  
+  15  ave :: [Int] -> Int
+  16  ave xs = div (sum xs) (length xs)
+  17  
+[1 of 1] Compiling First            ( src/First.hs, interpreted )
+Ok, one module loaded.
+2022-06-16 15:38:56.0048699
+>>> average [1,2,3,4,5]
+3
+2022-06-16 15:39:26.5320536
+>>> 
+2022-06-16 15:47:24.1112197
+>>> :t take 3 [1,2,3,4,5]
+take 3 [1,2,3,4,5] :: Num a => [a]
+2022-06-16 15:50:04.9757213
+>>> init [1 .. 5]
+[1,2,3,4]
+2022-06-16 16:07:10.7986663
+>>> myinit [1 .. 5]
+
+<interactive>:22:1: error:
+    • Variable not in scope: myinit :: [a0] -> t
+    • Perhaps you meant ‘init’ (imported from Prelude)
+2022-06-16 16:14:50.8836938
+>>> myinit [1 .. 5]
+
+<interactive>:23:1: error:
+    • Variable not in scope: myinit :: [a0] -> t
+    • Perhaps you meant ‘init’ (imported from Prelude)
+2022-06-16 16:15:13.9935275
+>>> :e
+   1  module First where
+   2  
+   3  double :: Int -> Int
+   4  double x = x + x
+   5  
+   6  quadruple :: Int -> Int
+   7  quadruple x = double (double x)
+   8  
+   9  factorial :: Integer -> Integer
+  10  factorial n = product [1 .. n]
+  11  
+  12  average :: [Int] -> Int
+  13  average xs = sum xs `div` length xs
+  14  
+  15  ave :: [Int] -> Int
+  16  ave xs = div (sum xs) (length xs)
+  17  
+  18  myinit :: [a] -> [a]
+  19  myinit (x:[]) = []
+  20  myinit (x:xs) = x : (init xs)
+[1 of 1] Compiling First            ( src/First.hs, interpreted )
+Ok, one module loaded.
+2022-06-16 16:15:31.5730837
+>>> myinit [1 .. 5]
+[1,2,3,4]
+2022-06-16 16:15:46.2975323
+>>> :q
+Leaving GHCi.
