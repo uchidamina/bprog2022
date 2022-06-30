@@ -444,3 +444,141 @@ Ok, one module loaded.
 2022-06-16 16:15:46.2975323
 >>> :q
 Leaving GHCi.
+GHCi, version 9.0.2: https://www.haskell.org/ghc/  :? for help
+Loaded GHCi configuration from /home/mina/bprog2022/.ghci
+2022-06-23 14:56:20.2400495
+>>> clear
+
+<interactive>:1:1: error: Variable not in scope: clear
+2022-06-23 14:56:59.3224313
+>>> clear
+
+<interactive>:2:1: error: Variable not in scope: clear
+2022-06-23 14:57:14.588273
+>>> GHCi, version 9.0.2: https://www.haskell.org/ghc/  :? for help
+Loaded GHCi configuration from /home/mina/bprog2022/.ghci
+2022-06-23 14:57:37.6839791
+>>> :i Num
+type Num :: * -> Constraint
+class Num a where
+  (+) :: a -> a -> a
+  (-) :: a -> a -> a
+  (*) :: a -> a -> a
+  negate :: a -> a
+  abs :: a -> a
+  signum :: a -> a
+  fromInteger :: Integer -> a
+  {-# MINIMAL (+), (*), abs, signum, fromInteger, (negate | (-)) #-}
+  	-- Defined in ‘GHC.Num’
+instance Num NominalDiffTime
+  -- Defined in ‘time-1.9.3:Data.Time.Clock.Internal.NominalDiffTime’
+instance Num DiffTime
+  -- Defined in ‘time-1.9.3:Data.Time.Clock.Internal.DiffTime’
+instance Num Word -- Defined in ‘GHC.Num’
+instance Num Integer -- Defined in ‘GHC.Num’
+instance Num Int -- Defined in ‘GHC.Num’
+instance Num Float -- Defined in ‘GHC.Float’
+instance Num Double -- Defined in ‘GHC.Float’
+2022-06-23 14:57:53.4583208
+>>> 1 == 2
+False
+2022-06-23 15:06:12.5685862
+>>> 1 < 2
+True
+2022-06-23 15:06:28.1728715
+>>> 1 < 1
+False
+2022-06-23 15:06:35.217888
+>>> 1 <= 2
+True
+2022-06-23 15:06:43.606145
+>>> 1 >= 2
+False
+2022-06-23 15:06:57.9518181
+>>> 'a' < 'b'
+True
+2022-06-23 15:11:19.9327688
+>>> 'a' < 'B'
+False
+2022-06-23 15:11:43.4709741
+>>> 1 /= 1
+False
+2022-06-23 15:16:59.7457439
+>>> 1 /= 2
+True
+2022-06-23 15:17:10.885909
+>>> :i abs
+type Num :: * -> Constraint
+class Num a where
+  ...
+  abs :: a -> a
+  ...
+  	-- Defined in ‘GHC.Num’
+2022-06-23 15:30:26.4396928
+>>> abs (-234)
+234
+2022-06-23 15:34:38.3397384
+>>> GHCi, version 9.0.2: https://www.haskell.org/ghc/  :? for help
+Loaded GHCi configuration from /home/mina/bprog2022/.ghci
+2022-06-30 14:56:16.6447481
+>>> [ x ^ 2 | x <- [1 .. 5] ]
+[1,4,9,16,25]
+2022-06-30 15:01:49.4933419
+>>> map (^2) [1..5]
+[1,4,9,16,25]
+2022-06-30 15:05:07.4932837
+>>> 2022-06-30 15:11:36.6399008
+>>> [ x * 2 | x <- [1 .. 5] ]
+[2,4,6,8,10]
+2022-06-30 15:12:30.6067041
+>>> [ x `div` 2 | x <- [1 .. 5]]
+[0,1,1,2,2]
+2022-06-30 15:13:20.4362774
+>>> 
+2022-06-30 15:13:38.8884194
+>>> 
+2022-06-30 15:15:38.4278385
+>>> [ x `divMod` 2 | x <- [1 .. 5]]
+[(0,1),(1,0),(1,1),(2,0),(2,1)]
+2022-06-30 15:16:31.6510175
+>>> [ (x, y) | x <- "abc", y <- [4,5] ]
+[('a',4),('a',5),('b',4),('b',5),('c',4),('c',5)]
+2022-06-30 15:20:50.7845311
+>>> [ (x, y) | y <- [4,5],  x <- "abc" ]
+[('a',4),('b',4),('c',4),('a',5),('b',5),('c',5)]
+2022-06-30 15:22:12.4280116
+>>> 
+2022-06-30 15:27:20.9843514
+>>> myconcat [[1,2,3],[4,5],[6,7,8,9]]
+
+<interactive>:11:1: error:
+    • Variable not in scope: myconcat :: [[a0]] -> t
+    • Perhaps you meant one of these:
+        ‘mconcat’ (imported from Prelude), ‘concat’ (imported from Prelude)
+2022-06-30 15:28:42.5901317
+>>> myconcat [[1,2,3],[4,5],[6,7,8,9]]
+
+<interactive>:12:1: error:
+    • Variable not in scope: myconcat :: [[a0]] -> t
+    • Perhaps you meant one of these:
+        ‘mconcat’ (imported from Prelude), ‘concat’ (imported from Prelude)
+2022-06-30 15:31:26.6194396
+>>> [ 1 | _ <- [1 .. 5] ]
+[1,1,1,1,1]
+2022-06-30 15:47:31.8532391
+>>> mylength ['a' .. 'z']
+
+<interactive>:14:1: error:
+    • Variable not in scope: mylength :: [Char] -> t
+    • Perhaps you meant ‘length’ (imported from Prelude)
+2022-06-30 15:50:59.3060337
+>>> 
+2022-06-30 15:51:36.0418079
+>>> mylength ['a' .. 'z']
+
+<interactive>:16:1: error:
+    • Variable not in scope: mylength :: [Char] -> t
+    • Perhaps you meant ‘length’ (imported from Prelude)
+2022-06-30 15:52:32.3207967
+>>> :q
+Leaving GHCi.
