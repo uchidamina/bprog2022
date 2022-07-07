@@ -582,3 +582,26 @@ Loaded GHCi configuration from /home/mina/bprog2022/.ghci
 2022-06-30 15:52:32.3207967
 >>> :q
 Leaving GHCi.
+GHCi, version 9.0.2: https://www.haskell.org/ghc/  :? for help
+Loaded GHCi configuration from /home/mina/bprog2022/.ghci
+2022-07-07 16:05:07.9091718
+>>> :e src/Caesar.hs
+   1  module Caesar where
+   2  
+   3  import Data.Char
+Ok, no modules loaded.
+2022-07-07 16:05:51.1106184
+>>> :l src/Caesar.hs
+[1 of 1] Compiling Caesar           ( src/Caesar.hs, interpreted )
+Ok, one module loaded.
+2022-07-07 16:05:51.1847816
+>>> ord 'A'
+65
+2022-07-07 16:06:21.5973965
+>>> ord 'a'
+97
+2022-07-07 16:06:33.1378627
+>>> 
+2022-07-07 16:11:19.9854296
+>>> :q
+Leaving GHCi.
